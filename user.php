@@ -2,9 +2,9 @@
 include_once "header.php";
 include_once "database.php";
 
-$id = (int) $_GET['id_osebe'];
+$id = (int) $_GET['id'];
 
-$query = "SELECT* FROM osebe WHERE id_osebe = ?";
+$query = "SELECT* FROM users WHERE id = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
@@ -21,7 +21,7 @@ $usero = $stmt->fetch();
 //prikaže povezavo samo administratorjem
 if(admin()){
 ?>
-<a href="user_delete.php?id=<?php echo $user['id_osebe'];?>" class="btn btn-primary"
+<a href="user_delete.php?id=<?php echo $user['id'];?>" class="btn btn-primary"
     onclick="return confirm('Prepričani?')">Izbriši</a>
 <?php
 }
@@ -39,7 +39,7 @@ if(admin()){
         ?>
         <img class="masthead-avatar mb-5" src="<?php echo $avatar;?>" alt="" />
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0"><?php echo $user['ime'].' '.$user['priimek'];?></h1>
+        <h1 class="masthead-heading text-uppercase mb-0"><?php echo $user['first_name'].' '.$user['last_name'];?></h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -47,7 +47,7 @@ if(admin()){
             <div class="divider-custom-line"></div>
         </div>
         <!-- Masthead Subheading-->
-        <p class="masthead-subheading font-weight-light mb-0"><?php echo $user['opis'];?></p>
+        <p class="masthead-subheading font-weight-light mb-0"><?php echo $user['description'];?></p>
         </div>
          </div>
    

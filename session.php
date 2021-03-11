@@ -14,12 +14,12 @@ if(!isset($_SESSION['user_id']) && (!in_array($_SERVER['REQUEST_URI'],$allow)))
 function getFullName($user_id) {
     require "database.php";
 
-    $query = "SELECT * FROM osebe WHERE id = ?";
+    $query = "SELECT * FROM osebe WHERE id_osebe = ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$user_id]);
 
     $user = $stmt->fetch();
-    return $user['ime'].' '.$user['priimek'];
+    return $user['first_name'].' '.$user['last_name'];
 }
 
 //vrača za trenutnega prijavljenega uporabnika

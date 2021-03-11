@@ -1,14 +1,14 @@
 <?php
 include_once "database.php";
 
-$first_name = $_POST['ime'];
-$last_name = $_POST['priimek'];
-$email = $_POST['enaslov'];
-$pass = $_POST['geslo'];
-$pass2 = $_POST['geslo2'];
+$first_name = $_POST['first_name'];
+$last_name = $_POST['last_name'];
+$email = $_POST['email'];
+$pass = $_POST['pass'];
+$pass2 = $_POST['pass2'];
 
 //preverim, ali so podatki polni in se gesli ujemata
-if(!empty($user) && !empty($last_name) && !empty($email)
+if(!empty($first_name) && !empty($last_name) && !empty($email)
 && !empty($pass) && ($pass == $pass2)){
 
 $pass = password_hash($pass,PASSWORD_DEFAULT);

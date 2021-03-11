@@ -20,35 +20,35 @@
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ime</label>
-                            <input class="form-control" type="text" name="ime" placeholder="Vnesite ime"
+                            <input class="form-control" type="text" name="first_name" placeholder="Vnesite ime"
                                 required="required" /> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Priimek</label>
-                            <input class="form-control" type="text" name="priimek" placeholder="Vnesite priimek"
+                            <input class="form-control" type="text" name="last_name" placeholder="Vnesite priimek"
                                 required="required" /> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>E-Pošta</label>
-                            <input class="form-control" type="email" name="enaslov" placeholder="Vnesite e-pošto"
+                            <input class="form-control" type="email" name="email" placeholder="Vnesite e-pošto"
                                 required="required" /> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Geslo</label>
-                            <input class="form-control" type="password" name="geslo" placeholder="Vnesite geslo"
+                            <input class="form-control" type="password" name="pass" placeholder="Vnesite geslo"
                                 required="required" /> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ponovi geslo</label>
-                            <input class="form-control" type="password" name="geslo2" placeholder="Ponovno vnesite geslo"
+                            <input class="form-control" type="password" name="pass2" placeholder="Ponovno vnesite geslo"
                                 required="required" /> <br />
                         </div>
                     </div>
