@@ -1,22 +1,22 @@
 <?php
 include_once "database.php";
 
-$first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
-$email = $_POST['email'];
-$pass = $_POST['pass'];
-$pass2 = $_POST['pass2'];
+$ime = $_POST['ime'];
+$priimek = $_POST['priimek'];
+$enaslov = $_POST['enaslov'];
+$geslo = $_POST['geslo'];
+$geslo2 = $_POST['geslo2'];
 
 //preverim, ali so podatki polni in se gesli ujemata
-if(!empty($first_name) && !empty($last_name) && !empty($email)
-&& !empty($pass) && ($pass == $pass2)){
+if(!empty($ime) && !empty($priimek) && !empty($enaslov)
+&& !empty($geslo) && ($geslo == $geslo2)){
 
-$pass = password_hash($pass,PASSWORD_DEFAULT);
+$geslo = password_hash($geslo,PASSWORD_DEFAULT);
 
 $query  = "INSERT INTO osebe(ime,priimek,enaslov,geslo) VALUES(?,?,?,?)";
 
 $stmt = $pdo->prepare($query);
-$stmt->execute([$first_name,$last_name,$email,$pass]);
+$stmt->execute([$ime,$priimek,$enaslov,$geslo]);
 
 header("Location: login.php");
 }
