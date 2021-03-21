@@ -47,10 +47,6 @@ if (move_uploaded_file($_FILES["url"]["tmp_name"], $target_file)) {
     $stmt = $pdo->prepare($query);
     $stmt->execute([$max_oseb,$dopis,$cena,$stevilo_sob]);
 
-    $query  = "UPDATE slike SET url=? WHERE id=?";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute($target_file]);
-
     header("Location: apartmaji.php?id=".$id);
     die();
 
@@ -59,14 +55,22 @@ if (move_uploaded_file($_FILES["url"]["tmp_name"], $target_file)) {
     die();
     }
 
+    $query  = "UPDATE slike SET url=? WHERE id=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute($target_file]);
+
+    header("Location: apartmaji.php?id=".$id);
+    die();
+  }
+} else {
+    header("Location: apartmaji_add.php?id=".$id);
+    die();
+    }
 
 
 
-}
-else{
-header("Location: apartmaji_add.php?id=".$id);
-die();
-}
+
+
 
    
 ?>

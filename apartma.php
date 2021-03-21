@@ -2,26 +2,19 @@
 include_once "header.php";
 include_once "database.php";
 
-$id = (int) $_GET['id_apartmaji '];
+$id = (int) $_GET['id'];
 
 $query = "SELECT* FROM apartmaji WHERE id_apartmaji = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
 
-$query = "SELECT* FROM ocena_apartmaja WHERE id_apartmaji  = ?";
-$stmt = $pdo->prepare($query);
-$stmt->execute([$id]);
-
-$query = "SELECT* FROM slike WHERE id_apartmaji  = ?";
-$stmt = $pdo->prepare($query);
-$stmt->execute([$id]);
-
 if($stmt->rowCount() != 1){
     header("Location: index.php");
     die();
 }
 $apartmaji = $stmt->fetch();
+
 
 ?>
 
@@ -39,19 +32,28 @@ if(admin()){
 <section class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="<?php echo $apartmaji['url'];?>" alt="" />
+        <img class="masthead-avatar mb-5" src="<?php echo $apartmaji['zgradba'];?>" alt="" />
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0"><?php echo $apartmaji['ime_slike'];?></h1>
+        <h1 class="masthead-heading text-uppercase mb-0"><?php echo $apartmaji['ime'];?></h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
+       
         <!-- Masthead Subheading-->
         <p class="masthead-subheading font-weight-light mb-0"><?php echo $apartmaji['opis'];?></p>
-        <div class="cypro_price">Treuntna cena: <span><?php echo $apartmaji['cena'];?> </span></div>
-        <div class="cypro_rating">Treuntna ocena: <span><?php echo round($apartmaji ['ocena'],1);?> </span></div>
+        <div class="cena">Cena nočitve: <span><?php echo $apartmaji['cena'];?> </span></div>
+        <?php
+    $query = "SELECT * FROM ocena_apartmaja WHERE  ocena=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$id]);
+   
+    $ocena= $stmt->fetch();
+
+    ?>
+    <div class="ocena">Treuntna ocena: <span><?php echo round($ocena['ocena'],1);?> </span></div>
     </div>
     </div>
     <?php
@@ -59,8 +61,8 @@ if(admin()){
     ?>
     <div class="upload_slik">
         <form action="slika_insert.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?php echo $apartmaji['id'];?>" />
-            <input type="text" name="title" placeholder="Vnesi naslov fotografije" /><br />
+            <input type="hidden" name="id_slike" value="<?php echo $apartmaji['id_apartmaji'];?>" />
+            <input type="text" name="ime_slike" placeholder="Vnesi naslov fotografije" /><br />
             <input type="file" name="url" requiered="requiered"><br />
             <input type="submit" value="Naloži" />
         </form>
@@ -148,6 +150,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
         </div>
     </div>
 </div>
+
 <div class="komentarji" id="komentarji">
     <div class="obrazec">
         <form action="komentar_insert.php" method="post">
@@ -165,7 +168,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
     while($row = $stmt->fetch()){
         echo '<div class="komentar">';
         if($_SESSION['id_osebe'] == $row['id_osebe']){
-        echo '<a href="comment_delete.php?id= ' .$row['id'].'" onclick="return confirm(\'Prepričani?\')">x</a>';
+        echo '<a href="komentar_delete.php?id= ' .$row['id'].'" onclick="return confirm(\'Prepričani?\')">x</a>';
         echo '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal'.$row['id'].'">u</div>';
         echo '<div class="portfolio-modal modal fade" id="portfolioModal'.$row['id'].'" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">';
         echo '<div class="modal-dialog modal-xl" role="document">';
@@ -185,7 +188,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
         echo '<div class="divider-custom-icon"><i class="fas fa-star"></i></div>';
         echo '<div class="divider-custom-line"></div>';
         echo '</div>';
-        echo '<form action="comment_update.php" method="post">';
+        echo '<form action="komentar_update.php" method="post">';
         echo '<input type="hidden" name="id" value="'.$row['id'].'" />';
         echo '<textarea name="content" rows="5" cols="25">'.$row['komentar'].'</textarea> </br>';
         echo '<input type="submit" value="Uredi" class="btn btn-primary" />';

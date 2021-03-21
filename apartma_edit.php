@@ -5,20 +5,17 @@ include_once "database.php";
 
 $id = (int) $_GET['id'];
 
-$query = "SELECT * FROM apartmaji WHERE id = ?";
+$query = "SELECT * FROM apartmaji WHERE id_apartmaji = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
 
-$query = "SELECT * FROM slike WHERE id_apartmaji = ?";
-$stmt = $pdo->prepare($query);
-$stmt->execute([$id]);
 
 if($stmt->rowCount() != 1){
     header("Location: index.php");
     die();
 }
-$crypto = $stmt->fetch();
+$apartmaji = $stmt->fetch();
 
 ?>
 
@@ -49,20 +46,20 @@ $crypto = $stmt->fetch();
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Opis</label>
                             <textarea name="description" class="form-control" rows="5"
-                                placeholder="Vnesi opis valute"></textarea>
+                                placeholder="Vnesi opis apartmaja"></textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Cena (€)</label>
-                            <input class="form-control" type="text" name="current_price"
-                                placeholder="Vnesite trenutno ceno" value="<?php echo $crypto['current_price'];?>"/> <br />
+                            <input class="form-control" type="text" name="cena"
+                                placeholder="Vnesite ceno nočitve" value="<?php echo $apartmaji['cena'];?>"/> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Slika</label>
-                            <input class="form-control" type="file" name="logo" placeholder="Vnesite sliko" /> <br />
+                            <input class="form-control" type="file" name="zgradba" placeholder="Vnesite sliko" /> <br />
                         </div>
                     </div>
             </div>

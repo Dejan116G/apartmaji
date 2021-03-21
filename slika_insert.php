@@ -6,7 +6,7 @@ adminOnly();
 include_once "database.php";
 
 $ime_slike = $_POST['ime_slike'];
-$id = (int) $_POST['id'];
+$id = (int) $_POST['id_slike'];
 
 $target_dir = "images/";
 
@@ -23,7 +23,6 @@ $check = getimagesize($_FILES["url"]["tmp_name"]);
   } else {
     $uploadOk = 2;
   }
-
 // Check file size
 if ($_FILES["url"]["size"] > 5000000) {
     $uploadOk = 3;
@@ -41,6 +40,7 @@ if ($uploadOk = 1){
     
 if (move_uploaded_file($_FILES["url"]["tmp_name"], $target_file)) {
     $query  = "INSERT INTO slike(ime_slike,url,id_apartmaji) VALUES(?,?,?)";
+    $stmt = $pdo->prepare($query);
     $stmt->execute([$ime_slike,$target_file,$id]);
 
     odziv("slika dodana");

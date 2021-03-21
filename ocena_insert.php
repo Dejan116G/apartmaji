@@ -14,7 +14,7 @@ if(!empty($id) && !empty($ocena)){
    $stmt->execute([$ocena,$id_osebe,$id]);
 
    // posodobim povprečno oceno apartmaja
-   $query = "UPDATE apartmaji SET ocena = (SELECT AVG(ocena) FROM ocena_apartmaja WHERE id_apartmaji = ?) WHERE id = ?";
+   $query = "UPDATE ocena_apartmaja SET ocena = (SELECT AVG(ocena) FROM ocena_apartmaja WHERE id_apartmaji = ?) WHERE id = ?";
    $stmt = $pdo->prepare($query);
    $stmt->execute([$id,$id]);
 }
