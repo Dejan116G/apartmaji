@@ -2,24 +2,24 @@
 session_start();
 
 //do katerih strani ima uporabnik dostop
-$allow = ['/apartmaji/login.php','/apartmaji/register.php','/apartmaji/index.php','/apartmaji/login_check.php'];
+//$allow = ['/apartmaji/login.php','/apartmaji/register.php','/apartmaji/index.php','/apartmaji/login_check.php'];
 
 //preverim ali je uporabnik prijavljen, če ni ga peljem na prijavo
-if(!isset($_SESSION['user_id']) && (!in_array($_SERVER['REQUEST_URI'],$allow)))
+/*if(!isset($_SESSION['id_osebe']) && (!in_array($_SERVER['REQUEST_URI'],$allow)))
 {
     header("Location: login.php");
     die();
-}
+}*/
 
-function getFullName($user_id) {
+function getFullName($id_osebe) {
     require "database.php";
 
     $query = "SELECT * FROM osebe WHERE id_osebe = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$user_id]);
+    $stmt->execute([$id_osebe]);
 
-    $user = $stmt->fetch();
-    return $user['first_name'].' '.$user['last_name'];
+    $osebe = $stmt->fetch();
+    return $osebe['ime'].' '.$osebe['priimek'];
 }
 
 //vrača za trenutnega prijavljenega uporabnika

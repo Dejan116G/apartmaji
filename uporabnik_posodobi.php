@@ -14,16 +14,16 @@ if(!empty($ime) && !empty($priimek)
 && !empty($geslo) && ($geslo == $geslo2)){
 
 
-$query  = "UPDATE osebe SET ime = ?, priimek= ?, opis= ? WHERE id = ?";
+$query  = "UPDATE osebe SET ime = ?, priimek= ?, opis= ? WHERE id_osebe = ?";
 
 $stmt = $pdo->prepare($query);
 $stmt->execute([$fime,$priimek,$opis,$id]);
 
-header("Location: profile.php");
+header("Location: profil.php");
 die();
 }
 else{
-header("Location: profile.php");
+header("Location: profil.php");
 die();
 }
 ?>

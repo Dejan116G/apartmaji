@@ -2,7 +2,7 @@
 include_once "session.php";
 include_once "database.php";
 
-$id = $_SESSION['id_osebe'];
+$id = $_SESSION['user_id'];
 
 $geslo = $_POST['geslo'];
 $geslo2 = $_POST['geslo2'];
@@ -12,14 +12,14 @@ if(!empty($geslo) && ($geslo == $geslo2)){
 
 $geslo = password_hash($geslo,PASSWORD_DEFAULT);
 
-$query  = "UPDATE osebe SET geslo=? WHERE id=?";
+$query  = "UPDATE osebe SET geslo=? WHERE id_osebe=?";
 
 $stmt = $pdo->prepare($query);
 $stmt->execute([$geslo,$id]);
 
-header("Location: profile.php");
+header("Location: profil.php");
 }
 else{
-header("Location: profile.php");
+header("Location: profil.php");
 }
 ?>

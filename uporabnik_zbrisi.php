@@ -3,7 +3,7 @@ include_once "session.php";
 adminOnly();
 include_once "database.php";
 
-$id = (int) $_GET['id'];
+$id = (int) $_GET['id_osebe'];
 
 //izbrišem vse njegove komentarje
 $query = "DELETE FROM komentarji WHERE id_osebe = ?";
@@ -20,10 +20,10 @@ $query = "UPDATE ocena_apartmaja SET id_osebe=NULL WHERE id_osebe = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
-$query = "DELETE FROM osebe WHERE id = ?";
+$query = "DELETE FROM osebe WHERE id_osebe = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
-header("Location: users.php");
+header("Location: uporabniki.php");
 die();
 ?>

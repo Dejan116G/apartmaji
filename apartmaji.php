@@ -34,7 +34,9 @@ if(admin()){
               echo '<div class="portfolio-item mx-auto">';
               echo '<a href="apartma.php?id='.$row['id_apartmaji'].'">';
               echo '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">';
+              ?><h2 style="color:white"> Cena nočitve: <?php
               echo '<div class="portfolio-item-caption-content text-center text-white">'.$row['cena'].'</div>';
+              ?> EUR (€) </h2><?php
               echo '</div>';
               echo '<img class="img-fluid" src="'.$row['zgradba'].'" alt="" />';
               echo '<h3 class="justify-content-center row align-items-center">'.$row['ime'].'</h3>';

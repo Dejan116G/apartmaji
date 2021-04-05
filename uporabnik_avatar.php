@@ -4,7 +4,7 @@ include_once "database.php";
 
 
 
-$id = $_SESSION['id_osebe'];
+$id = $_SESSION['user_id'];
 
 $target_dir = "avatars/";
 
@@ -42,11 +42,11 @@ if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
     $stmt = $pdo->prepare($query);
     $stmt->execute([$title,$id]);
 
-    header("Location: profile.php");
+    header("Location: profil.php");
     die();
 
 } else {
-    header("Location: profile.php");
+    header("Location: profil.php");
     die();
     }
 
@@ -55,7 +55,7 @@ if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
 
 }
 else{
-header("Location: profile.php");
+header("Location: profil.php");
 die();
 }
 

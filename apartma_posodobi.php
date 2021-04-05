@@ -3,8 +3,8 @@ include_once "session.php";
 adminOnly();
 include_once "database.php";
 
-$id = $_POST['id'];
-
+$id = $_POST['id_apartmaji'];
+$title=$_POST['ime'];
 $max_oseb= $_POST['max_oseb'];
 $opis = $_POST['opis'];
 $stevilo_sob = $_POST['stevilo_sob'];
@@ -40,30 +40,32 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 
 
 //preverim, ali so podatki polni
+if (!empty($title)) {    
 if(!empty($max_oseb) && ($uploadOk = 1)){
 
 if (move_uploaded_file($_FILES["url"]["tmp_name"], $target_file)) {
-    $query  = "UPDATE apartmaji SET max_oseb=?,opis=?,cena=?,stevilo_sob=? WHERE id=?";
+    $query  = "UPDATE apartmaji SET max_oseb=?,opis=?,cena=?,stevilo_sob=? WHERE id_apartmaji=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$max_oseb,$dopis,$cena,$stevilo_sob]);
 
-    header("Location: apartmaji.php?id=".$id);
+    header("Location: apartma.php?id=".$id);
     die();
 
 } else {
-    header("Location: apartmaji_add.php?id=".$id);
+    header("Location: apartma_dodaj.php?id=".$id);
+    die();
+}
+ } else{
+
+    $query  = "UPDATE slike SET url=? WHERE id_slike=?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute($target_file);
+
+    header("Location: apartma.php?id=".$id);
     die();
     }
-
-    $query  = "UPDATE slike SET url=? WHERE id=?";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute($target_file]);
-
-    header("Location: apartmaji.php?id=".$id);
-    die();
-  }
 } else {
-    header("Location: apartmaji_add.php?id=".$id);
+    header("Location: apartma_dodaj.php?id=".$id);
     die();
     }
 

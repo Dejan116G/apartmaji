@@ -23,9 +23,9 @@ $apartmaji = $stmt->fetch();
 //prikaže povezavo samo administratorjem
 if(admin()){
 ?>
-<a href="apartma_delete.php?id=<?php echo $apartmaji['id_apartmaji'];?>" class="btn btn-primary"
+<a href="apartma_zbrisi.php?id=<?php echo $apartmaji['id_apartmaji'];?>" class="btn btn-primary"
     onclick="return confirm('Prepričani?')">Izbriši</a>
-<a href="apartma_edit.php?id=<?php echo $apartmaji['id_apartmaji'];?>" class="btn btn-primary">Uredi</a>
+<a href="apartma_spremeni.php?id=<?php echo $apartmaji['id_apartmaji'];?>" class="btn btn-primary">Uredi</a>
 <?php
 }
 ?>
@@ -41,20 +41,11 @@ if(admin()){
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-       
+      
         <!-- Masthead Subheading-->
         <p class="masthead-subheading font-weight-light mb-0"><?php echo $apartmaji['opis'];?></p>
         <div class="cena">Cena nočitve: <span><?php echo $apartmaji['cena'];?> </span></div>
-        <?php
-    $query = "SELECT * FROM ocena_apartmaja WHERE  ocena=?";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([$id]);
-   
-    $ocena= $stmt->fetch();
-
-    ?>
-    <div class="ocena">Treuntna ocena: <span><?php echo round($ocena['ocena'],1);?> </span></div>
-    </div>
+       
     </div>
     <?php
     if(admin()){
@@ -128,33 +119,34 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
 }
 ?>
 </div>
+
 <div class="container d-flex justify-content-center mt-20">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="stars">
-                <form action="ocena_insert.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $apartmaji['id'];?>" />
-                    <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
-                    <label class="star star-5" for="star-5"></label>
-                    <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
-                    <label class="star star-4" for="star-4"></label>
-                    <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                    <label class="star star-3" for="star-3"></label>
-                    <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
-                    <label class="star star-2" for="star-2"></label>
-                    <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                    <label class="star star-1" for="star-1"></label>
-                    <input type="submit" value="Glasuj" class="btn btn-primary" />
-                </form>
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="stars">
+        <form action="ocena_insert.php" method="post">
+                <input class="star star-5" id="star-5" type="radio" name="star" value="5" <?php echo ($apartmaji['ocena'] >= 5)?'checked="checked"':'';?>/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" <?php echo ($apartmaji['ocena'] >= 4)?'checked="checked"':'';?>/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" <?php echo ($apartmaji['ocena'] >= 3)?'checked="checked"':'';?>/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" <?php echo ($apartmaji['ocena'] >= 2)?'checked="checked"':'';?>/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" <?php echo ($apartmaji['ocena'] >= 1)?'checked="checked"':'';?>/>
+                <label class="star star-1" for="star-1"></label>
+</form>
         </div>
+        
     </div>
 </div>
+</div>
+
 
 <div class="komentarji" id="komentarji">
     <div class="obrazec">
-        <form action="komentar_insert.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $apartmaji['id'];?>" />
+        <form action="komentar_vstavi.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $apartmaji['id_komentarji'];?>" />
             <textarea name="content" rows="5" cols="15"></textarea> </br>
             <input type="submit" value="Komentiraj" class="btn btn-primary" />
         </form>
@@ -167,10 +159,10 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
 
     while($row = $stmt->fetch()){
         echo '<div class="komentar">';
-        if($_SESSION['id_osebe'] == $row['id_osebe']){
-        echo '<a href="komentar_delete.php?id= ' .$row['id'].'" onclick="return confirm(\'Prepričani?\')">x</a>';
-        echo '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal'.$row['id'].'">u</div>';
-        echo '<div class="portfolio-modal modal fade" id="portfolioModal'.$row['id'].'" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">';
+        if($_SESSION['user_id'] == $row['id_osebe']){
+        echo '<a href="komentar_zbrisi.php?id= ' .$row['id_komentarji'].'" onclick="return confirm(\'Prepričani?\')">x</a>';
+        echo '<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal'.$row['id_komentarji'].'">u</div>';
+        echo '<div class="portfolio-modal modal fade" id="portfolioModal'.$row['id_komentarji'].'" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">';
         echo '<div class="modal-dialog modal-xl" role="document">';
         echo '<div class="modal-content">';
         echo '<button class="close" type="button" data-dismiss="modal" aria-label="Close">';
@@ -188,8 +180,8 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
         echo '<div class="divider-custom-icon"><i class="fas fa-star"></i></div>';
         echo '<div class="divider-custom-line"></div>';
         echo '</div>';
-        echo '<form action="komentar_update.php" method="post">';
-        echo '<input type="hidden" name="id" value="'.$row['id'].'" />';
+        echo '<form action="komentar_posodobi.php" method="post">';
+        echo '<input type="hidden" name="id" value="'.$row['id_komentarji'].'" />';
         echo '<textarea name="content" rows="5" cols="25">'.$row['komentar'].'</textarea> </br>';
         echo '<input type="submit" value="Uredi" class="btn btn-primary" />';
         echo '</form>';

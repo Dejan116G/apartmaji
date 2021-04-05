@@ -3,7 +3,7 @@ include_once "header.php";
 adminOnly();
 include_once "database.php";
 
-$id = (int) $_GET['id'];
+$id = (int) $_GET['id_apartmaji'];
 
 $query = "SELECT * FROM apartmaji WHERE id_apartmaji = ?";
 $stmt = $pdo->prepare($query);
@@ -33,8 +33,8 @@ $apartmaji = $stmt->fetch();
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form action="apartma_update.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?php echo $apartmaji['id'];?>" />
+                <form action="apartma_posodobi.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $apartmaji['id_apartmaji'];?>" />
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ime</label>
@@ -45,8 +45,8 @@ $apartmaji = $stmt->fetch();
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Opis</label>
-                            <textarea name="description" class="form-control" rows="5"
-                                placeholder="Vnesi opis apartmaja"></textarea>
+                            <textarea name="opis" class="form-control" rows="5"
+                                placeholder="Vnesi opis apartmaja"><?php echo $apartmaji['opis'];?></textarea>
                         </div>
                     </div>
                     <div class="control-group">
@@ -63,17 +63,23 @@ $apartmaji = $stmt->fetch();
                         </div>
                     </div>
             </div>
+            <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Ocena</label>
+                            <input class="form-control" type="text" name="ocena" placeholder="Vnesite trenutno oceno"/> <br />
+                        </div>
+                    </div>
             <br />
             <div id="success"></div>
             <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
                     type="submit">Shrani</button></div>
             </form>
         </div>
+ 
     </div>
     </div>
 </section>
 
-<h1>Apartmaji</h1>
 
 
 

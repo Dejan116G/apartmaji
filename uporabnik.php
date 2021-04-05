@@ -2,9 +2,9 @@
 include_once "header.php";
 include_once "database.php";
 
-$id = (int) $_GET['id'];
+$id = (int) $_GET['id_osebe'];
 
-$query = "SELECT* FROM osebe WHERE id = ?";
+$query = "SELECT* FROM osebe WHERE id_osebe = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 
@@ -21,7 +21,7 @@ $osebe= $stmt->fetch();
 //prikaže povezavo samo administratorjem
 if(admin()){
 ?>
-<a href="user_delete.php?id=<?php echo $osebe['id'];?>" class="btn btn-primary"
+<a href="uporabnik_zbrisi.php?id=<?php echo $osebe['id_osebe'];?>" class="btn btn-primary"
     onclick="return confirm('Prepričani?')">Izbriši</a>
 <?php
 }
@@ -39,7 +39,7 @@ if(admin()){
         ?>
         <img class="masthead-avatar mb-5" src="<?php echo $avatar;?>" alt="" />
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0"><?php echo $osebe'ime'].' '.$osebe'priimek'];?></h1>
+        <h1 class="masthead-heading text-uppercase mb-0"><?php echo $osebe['ime'].' '.$osebe['priimek'];?></h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>

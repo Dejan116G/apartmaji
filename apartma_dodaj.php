@@ -1,6 +1,7 @@
 <?php
 include_once "header.php";
 adminOnly();
+
 ?>
 
 <section class="page-section">
@@ -17,7 +18,7 @@ adminOnly();
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form action="apartma_insert.php" method="post" enctype="multipart/form-data">
+                <form action="apartma_vstavi.php" method="post" enctype="multipart/form-data">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ime</label>
@@ -46,15 +47,24 @@ adminOnly();
                     </div>
                     </div>
                     <br />
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Ocena</label>
+                            <input class="form-control" type="text" name="ocena" placeholder="Vnesite trenutno oceno"/> <br />
+                        </div>
+                    </div>
+                    <div class="container d-flex justify-content-center mt-20">
                             <div id="success"></div>
-                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Shrani</button></div>
-                </form>
+                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" 
+                            type="submit">Shrani</button></div>
+                            <div class="container d-flex justify-content-center mt-20">
+                
+                            <div class="row">
+         </form>
             </div>
         </div>
     </div>
 </section>
-
-<h1>Apartmaji</h1>
 
 
 

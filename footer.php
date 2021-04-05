@@ -29,7 +29,7 @@
                 <div class="col-lg-4">
                     <h4 class="text-uppercase mb-4">O nas</h4>
                     <p class="lead mb-0">
-                        To je najbolš stran o apartmajih!
+                        To je najbolša stran o apartmajih!
                         
                     </p>
                 </div>

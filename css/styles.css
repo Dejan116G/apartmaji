@@ -10279,6 +10279,15 @@ input.star-5:checked~label.star:before {
 input.star-1:checked~label.star:before {
   color: #F62
 }
+input.star-2:checked~label.star:before {
+  color: #F62
+}
+input.star-3:checked~label.star:before {
+  color: #F62
+}
+input.star-4:checked~label.star:before {
+  color: #F62
+}
 
 label.star:hover {
   transform: rotate(-15deg) scale(1.3)
