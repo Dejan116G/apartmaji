@@ -9,7 +9,7 @@ $rate = (int) $_POST['star'];
 $user_id = $_SESSION['user_id'];
 
 if (!empty($id) && !empty($rate)) {
-    $query = "INSERT INTO ocena_apartmaja(ocene,user_id,id_apartmaji) VALUES (?,?,?)";
+    $query = "INSERT INTO ocena_apartmaja(ocene,id_osebe,id_apartmaji) VALUES (?,?,?)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$rate,$user_id,$id]);
 

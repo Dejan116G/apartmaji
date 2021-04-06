@@ -14,7 +14,7 @@ $apartmaji = $stmt->fetch();
 $apartmaji_id=$apartmaji['id_apartmaji'];
 
 //uredi le, če je trenutno prijavljen lastnik avtor komentarja.
-$query = "UPDATE komentarji SET komentar=? where id_komentarji = ? AND user_id = ? ";
+$query = "UPDATE komentarji SET komentar=? where id_komentarji = ? AND id_osebe = ? ";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$komentar,$id,$id_osebe]);
 

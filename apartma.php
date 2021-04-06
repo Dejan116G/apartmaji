@@ -32,7 +32,7 @@ if(admin()){
 <section class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="<?php echo $apartmaji['zgradba'];?>" alt="" />
+        <img class="masthead-avatar mb-5" src="<?php echo $apartmaji['zgradba'];?>" alt=""  />
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0"><?php echo $apartmaji['ime'];?></h1>
         <!-- Icon Divider-->
@@ -44,7 +44,7 @@ if(admin()){
       
         <!-- Masthead Subheading-->
         <p class="masthead-subheading font-weight-light mb-0"><?php echo $apartmaji['opis'];?></p>
-        <div class="cena">Cena nočitve: <span><?php echo $apartmaji['cena'];?> </span></div>
+        <div class="cena">Cena nočitve: <span><?php echo $apartmaji['cena'];?> EUR (€) </span></div>
        
     </div>
     <?php
@@ -146,7 +146,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
 <div class="komentarji" id="komentarji">
     <div class="obrazec">
         <form action="komentar_vstavi.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $apartmaji['id_komentarji'];?>" />
+            <input type="hidden" name="id" value="<?php echo $apartmaji['id_apartmaji'];?>" />
             <textarea name="content" rows="5" cols="15"></textarea> </br>
             <input type="submit" value="Komentiraj" class="btn btn-primary" />
         </form>

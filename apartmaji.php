@@ -5,7 +5,7 @@ include_once "header.php";
 //prikaže povezavo samo administratorjem
 if(admin()){
 ?>
-<a href="apartmaji_add.php" class="btn btn-primary">Moji apartmaji</a>
+<a href="apartma_dodaj.php" class="btn btn-primary">Moji apartmaji</a>
 <?php
 }
 ?>
