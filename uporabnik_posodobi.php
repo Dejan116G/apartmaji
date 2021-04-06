@@ -17,7 +17,7 @@ if(!empty($ime) && !empty($priimek)
 $query  = "UPDATE osebe SET ime = ?, priimek= ?, opis= ? WHERE id_osebe = ?";
 
 $stmt = $pdo->prepare($query);
-$stmt->execute([$fime,$priimek,$opis,$id]);
+$stmt->execute([$ime,$priimek,$opis,$id]);
 
 header("Location: profil.php");
 die();

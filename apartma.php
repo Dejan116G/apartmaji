@@ -62,7 +62,7 @@ if(admin()){
     }
     ?>
 </section>
-<div class="container">
+<div>
 <?php
     $query = "SELECT * FROM slike WHERE  id_apartmaji=?";
     $stmt = $pdo->prepare($query);
@@ -124,7 +124,8 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
 <div class="row">
     <div class="col-md-12">
         <div class="stars">
-        <form action="ocena_insert.php" method="post">
+        <form action="ocena_vpis.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $apartmaji['id_apartmaji'];?>" />
                 <input class="star star-5" id="star-5" type="radio" name="star" value="5" <?php echo ($apartmaji['ocena'] >= 5)?'checked="checked"':'';?>/>
                 <label class="star star-5" for="star-5"></label>
                 <input class="star star-4" id="star-4" type="radio" name="star" value="4" <?php echo ($apartmaji['ocena'] >= 4)?'checked="checked"':'';?>/>
@@ -135,6 +136,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
                 <label class="star star-2" for="star-2"></label>
                 <input class="star star-1" id="star-1" type="radio" name="star" value="1" <?php echo ($apartmaji['ocena'] >= 1)?'checked="checked"':'';?>/>
                 <label class="star star-1" for="star-1"></label>
+                <input type="submit" value="Glasuj" class="btn btn-primary" />
 </form>
         </div>
         
