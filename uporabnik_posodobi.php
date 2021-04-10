@@ -10,8 +10,7 @@ $opis = $_POST['opis'];
 $id = $_SESSION['user_id'];
 
 //preverim, ali so podatki polni in se gesli ujemata
-if(!empty($ime) && !empty($priimek)
-&& !empty($geslo) && ($geslo == $geslo2)){
+if(!empty($ime) && !empty($priimek)){
 
 
 $query  = "UPDATE osebe SET ime = ?, priimek= ?, opis= ? WHERE id_osebe = ?";

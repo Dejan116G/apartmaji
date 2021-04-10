@@ -11,12 +11,12 @@ session_start();
     die();
 }*/
 
-function getFullName($id_osebe) {
+function getFullName($user_id) {
     require "database.php";
 
     $query = "SELECT * FROM osebe WHERE id_osebe = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$id_osebe]);
+    $stmt->execute([$user_id]);
 
     $osebe = $stmt->fetch();
     return $osebe['ime'].' '.$osebe['priimek'];

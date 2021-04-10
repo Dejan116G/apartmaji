@@ -7,7 +7,9 @@ include_once "database.php";
 $id = (int) $_POST['id_apartmaji'];
 $rate = (int) $_POST['star'];
 $user_id = $_SESSION['user_id'];
-
+echo $id;
+echo $rate;
+echo $user_id;
 if (!empty($id) && !empty($rate)) {
     $query = "INSERT INTO ocena_apartmaja(ocene,id_osebe,id_apartmaji) VALUES (?,?,?)";
     $stmt = $pdo->prepare($query);

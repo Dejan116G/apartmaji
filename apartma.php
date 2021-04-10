@@ -45,13 +45,15 @@ if(admin()){
         <!-- Masthead Subheading-->
         <p class="masthead-subheading font-weight-light mb-0"><?php echo $apartmaji['opis'];?></p>
         <div class="cena">Cena nočitve: <span><?php echo $apartmaji['cena'];?> EUR (€) </span></div>
+        <div class="max_oseb">Za največ <span><?php echo $apartmaji['max_oseb'];?>  oseb</span></div>
+        <div class="stevilo_sob">Apartma ima <span><?php echo $apartmaji['stevilo_sob'];?>  sob</span></div>
        
     </div>
     <?php
     if(admin()){
     ?>
     <div class="upload_slik">
-        <form action="slika_insert.php" method="post" enctype="multipart/form-data">
+        <form action="slika_vstavi.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_slike" value="<?php echo $apartmaji['id_apartmaji'];?>" />
             <input type="text" name="ime_slike" placeholder="Vnesi naslov fotografije" /><br />
             <input type="file" name="url" requiered="requiered"><br />
@@ -125,17 +127,86 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
     <div class="col-md-12">
         <div class="stars">
         <form action="ocena_vpis.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $apartmaji['id_apartmaji'];?>" />
-                <input class="star star-5" id="star-5" type="radio" name="star" value="5" <?php echo ($apartmaji['ocena'] >= 5)?'checked="checked"':'';?>/>
+                <input type="hidden" name="id_apartmaji" value="<?php echo $apartmaji['id_apartmaji'];?>" />
+                <?php $ocena = $apartmaji['ocena'];
+                switch ($ocena) {
+                    case 5: ?><input class="star star-5" id="star-5" type="radio" name="star" value="5" <?php echo "checked";?>/>
                 <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4" <?php echo ($apartmaji['ocena'] >= 4)?'checked="checked"':'';?>/>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
                 <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" <?php echo ($apartmaji['ocena'] >= 3)?'checked="checked"':'';?>/>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
                 <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2" <?php echo ($apartmaji['ocena'] >= 2)?'checked="checked"':'';?>/>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
                 <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" <?php echo ($apartmaji['ocena'] >= 1)?'checked="checked"':'';?>/>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
                 <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 4: ?><input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" <?php echo "checked";?>/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 3: ?>
+                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" <?php echo "checked";?>/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 2: ?>
+                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" <?php echo "checked";?>/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 1:?>
+                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" <?php echo "checked";?>/>
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+                
+                <?Php default: ?>
+                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+                
+                <?Php } ?>
                 <input type="submit" value="Glasuj" class="btn btn-primary" />
 </form>
         </div>
@@ -148,8 +219,8 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
 <div class="komentarji" id="komentarji">
     <div class="obrazec">
         <form action="komentar_vstavi.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $apartmaji['id_apartmaji'];?>" />
-            <textarea name="content" rows="5" cols="15"></textarea> </br>
+            <input type="hidden" name="id_apartmaji" value="<?php echo $apartmaji['id_apartmaji'];?>" />
+            <textarea name="komentar" rows="5" cols="15"></textarea> </br>
             <input type="submit" value="Komentiraj" class="btn btn-primary" />
         </form>
     </div>
@@ -183,8 +254,8 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
         echo '<div class="divider-custom-line"></div>';
         echo '</div>';
         echo '<form action="komentar_posodobi.php" method="post">';
-        echo '<input type="hidden" name="id" value="'.$row['id_komentarji'].'" />';
-        echo '<textarea name="content" rows="5" cols="25">'.$row['komentar'].'</textarea> </br>';
+        echo '<input type="hidden" name="id_komentarji" value="'.$row['id_komentarji'].'" />';
+        echo '<textarea name="komentar" rows="5" cols="25">'.$row['komentar'].'</textarea> </br>';
         echo '<input type="submit" value="Uredi" class="btn btn-primary" />';
         echo '</form>';
         echo '<button class="btn btn-primary" data-dismiss="modal">';

@@ -40,6 +40,18 @@ adminOnly();
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Največ oseb</label>
+                            <input class="form-control" type="text" name="max_oseb" placeholder="Največ oseb"/> <br />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <label>Število sob</label>
+                            <input class="form-control" type="text" name="stevilo_sob" placeholder="Število sob"/> <br />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Slika</label>
                             <input class="form-control" type="file" name="zgradba" placeholder="Vnesite sliko"
                                 required="required" /> <br />
@@ -50,7 +62,7 @@ adminOnly();
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ocena</label>
-                            <input class="form-control" type="text" name="ocena" placeholder="Vnesite trenutno oceno"/> <br />
+                            <input class="form-control" type="text" name="ocena" placeholder="Koliko zvezdic ima apartma"/> <br />
                         </div>
                     </div>
                     <div class="container d-flex justify-content-center mt-20">

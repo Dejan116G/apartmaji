@@ -24,9 +24,9 @@ include_once "header.php";
             while($row = $stmt->fetch()){
               echo '<div class="col-md-6 col-lg-4 mb-5">';
               echo '<div class="portfolio-item mx-auto">';
-              echo '<a href="users.php?id='.$row['id_osebe'].'">';
+              echo '<a href="uporabnik.php?id='.$row['id_osebe'].'">';
               echo '<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">';
-              echo '<div class="portfolio-item-caption-content text-center text-white">'.substr($row['opis']. 0,30); echo '</div>';
+              echo '<div class="portfolio-item-caption-content text-center text-white">'.substr($row['opis']. 0,30). '</div>';
               echo '</div>';
               //uporabnik ima sliko?
               if(!empty($row['avatar'])){

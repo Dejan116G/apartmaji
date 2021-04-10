@@ -44,9 +44,9 @@ include_once "session.php";
                         if(isset($_SESSION['user_id'])){
                             $first_name = $_SESSION['first_name'];
                             echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="profile.php">Profil ('.$first_name.')</a></li>';
+                            href="profil.php">Profil ('.$first_name.')</a></li>';
                             echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="users.php">Uporabniki ('.$first_name.')</a></li>';
+                            href="uporabniki.php">Uporabniki ('.$first_name.')</a></li>';
                             echo '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             href="logout.php">Odjava ('.$first_name.')</a></li>';
                         }

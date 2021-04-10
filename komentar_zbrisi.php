@@ -2,7 +2,7 @@
 include_once "session.php";
 include_once "database.php";
 
-$id = (int) $_GET['id_komentarji'];
+$id = (int) $_GET['id'];
 $id_osebe = $_SESSION['user_id'];
 
 //pogledam za katero kriptovaluto gre
@@ -13,7 +13,7 @@ $apartmaji = $stmt->fetch();
 $id_apartmaji=$apartmaji['id_apartmaji'];
 
 //izbriše le, če je trenutno prijavljeni lastnik avtor komentarja
-$query = "DELETE FROM komentarji WHERE id_komentarji = ? AND user_id = ? ";
+$query = "DELETE FROM komentarji WHERE id_komentarji = ? AND id_osebe = ? ";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id,$id_osebe]);
 

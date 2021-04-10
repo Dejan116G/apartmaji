@@ -3,7 +3,7 @@ include_once "session.php";
 adminOnly();
 include_once "database.php";
 
-$id = (int) $_GET['id_osebe'];
+$id = (int) $_GET['id'];
 
 //izbrišem vse njegove komentarje
 $query = "DELETE FROM komentarji WHERE id_osebe = ?";

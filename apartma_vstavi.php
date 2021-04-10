@@ -5,6 +5,8 @@ include_once "database.php";
 
 $ime = $_POST['ime'];
 $opis = $_POST['opis'];
+$max_oseb = floatval($_POST['max_oseb']);
+$stevilo_sob = floatval($_POST['stevilo_sob']);
 $ocena = $_POST['ocena'];
 $cena = floatval($_POST['cena']); //kzezerzezrz0,64646agaggag => 0
 
@@ -41,9 +43,9 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if(!empty($ime) && ($uploadOk = 1)){
 
 if (move_uploaded_file($_FILES["zgradba"]["tmp_name"], $target_file)) {
-    $query  = "INSERT INTO apartmaji(ime,opis,cena,zgradba,ocena) VALUES(?,?,?,?,?)";
+    $query  = "INSERT INTO apartmaji(ime,opis,cena,max_oseb,stevilo_sob,zgradba,ocena) VALUES(?,?,?,?,?,?,?)";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$ime,$opis,$cena,$target_file,$ocena]);
+    $stmt->execute([$ime,$opis,$cena,$max_oseb,$stevilo_sob,$target_file,$ocena]);
 
     header("Location: apartmaji.php");
     die();

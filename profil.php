@@ -21,36 +21,30 @@ $user = $stmt->fetch();
             <div class="divider-custom-line"></div>
         </div>
 
-        <div>
-        <?php
-        if (!empty($user['avatar'])){
-            echo '<img src"='.$user['avatar'].'" alt="slika" width="150px" />';
-        }
-        ?>
-        </div>
         <!-- Registration Section Form-->
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form action="uporabnik_posodobi.php" method="post" >
+                <form action="uporabnik_posodobi.php" method="post">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ime</label>
-                            <input class="form-control" type="text" name="first_name" placeholder="Vnesite ime"
-                                required="required" value="<?php echo $user['ime'];?>" /> <br />
+                            <input class="form-control" type="text" name="ime" placeholder="Vnesite ime"
+                                required="required" value="<?php echo $user['ime']  ?? null;?>"/> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Priimek</label>
-                            <input class="form-control" type="text" name="last_name" placeholder="Vnesite priimek"
-                                required="required" value="<?php echo $user['priimek'];?>" /> <br />
+                            <input class="form-control" type="text" name="priimek" placeholder="Vnesite priimek"
+                                required="required" value="<?php echo $user['priimek'] ?? null;?>"/> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Opis</label>
-                            <textarea name="description"placeholder="Vnesite svoj opis" class="form-control" rows="5"><?php echo $user['opis']?></textarea><br />
+                            <textarea name="opis" placeholder="Vnesite svoj opis" class="form-control" 
+                            rows="5"><?php echo $user['opis'] ?? null;?></textarea> <br />
                             
                         </div>
                     </div>
@@ -73,14 +67,21 @@ $user = $stmt->fetch();
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
+        <div class="page-section-heading text-center text-uppercase text-secondary mb-0">
+        <?php 
+        if (!empty($user['avatar'])){
+            echo '<img src"='.$user['avatar'].'" alt="slika" width="150px" />';
+        }
+        ?>
+        </div>
         <!-- Registration Section Form-->
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form action="user_avatar.php" method="post" enctype="multipart/form-data">
+                <form action="uporabnik_avatar.php" method="post" enctype="multipart/form-data">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Avatar</label>
+                            <label>Avatar</label> 
                             <input class="form-control" type="file" name="avatar" placeholder="Izberi datoteko"
                                 required="required" /> <br />
                         </div>
@@ -88,7 +89,8 @@ $user = $stmt->fetch();
                 
                     <br />
                             <div id="success"></div>
-                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Pošlji</button></div>
+                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton"
+                             type="submit">Pošlji</button></div>
                 </form>
             </div>
         </div>
@@ -109,18 +111,18 @@ $user = $stmt->fetch();
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form action="user_change_pass.php" method="post">
+                <form action="uporabnik_spremeni_geslo.php" method="post">
                 <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Geslo</label>
-                            <input class="form-control" type="password" name="pass" placeholder="Vnesite geslo"
+                            <input class="form-control" type="password" name="geslo" placeholder="Vnesite geslo"
                                 required="required" /> <br />
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Ponovi geslo</label>
-                            <input class="form-control" type="password" name="pass2" placeholder="Ponovno vnesite geslo"
+                            <input class="form-control" type="password" name="geslo2" placeholder="Ponovno vnesite geslo"
                                 required="required" /> <br />
                         </div>
                     </div>
@@ -134,7 +136,6 @@ $user = $stmt->fetch();
     </div>
 </section>
 
-<h1>Posodobi svoje geslo</h1>
 
 <?php
 include_once "footer.php";

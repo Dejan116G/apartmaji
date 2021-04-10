@@ -3,7 +3,7 @@ include_once "header.php";
 adminOnly();
 include_once "database.php";
 
-$id = (int) $_GET['id_apartmaji'];
+$id = (int) $_GET['id'];
 
 $query = "SELECT * FROM apartmaji WHERE id_apartmaji = ?";
 $stmt = $pdo->prepare($query);

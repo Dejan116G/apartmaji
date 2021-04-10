@@ -17,9 +17,12 @@ $query  = "UPDATE osebe SET geslo=? WHERE id_osebe=?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$geslo,$id]);
 
+odziv("Geslo zamenjano");
+
 header("Location: profil.php");
 }
 else{
+odziv("Geslo ni bilo zamenjano.");    
 header("Location: profil.php");
 }
 ?>
