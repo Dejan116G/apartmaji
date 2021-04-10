@@ -5,7 +5,7 @@ include_once "database.php";
 $id = (int) $_GET['id'];
 $id_osebe = $_SESSION['user_id'];
 
-//pogledam za katero kriptovaluto gre
+//pogledam za kateri apartma gre
 $query = "SELECT * FROM komentarji WHERE id_komentarji = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);

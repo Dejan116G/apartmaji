@@ -29,8 +29,71 @@ if(admin()){
 <?php
 }
 ?>
+
 <section class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
+    <div class="container d-flex justify-content-center mt-20">
+<div class="row">
+    <div class="col-md-12">
+        <div class="stars">
+        <form action="ocena_vpis.php" method="post">
+                <input type="hidden" name="id_apartmaji" value="<?php echo $apartmaji['id_apartmaji'];?>" />
+                <?php $ocena = $apartmaji['ocena'];
+                switch ($ocena) {
+                    case 5: ?><input class="star star-5" id="star-5" type="radio" name="star" value="5" <?php echo "checked";?>/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 4: ?>
+                <input class="star star-4" id="star-4" type="radio" name="star" value="4" <?php echo "checked";?>/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 3: ?>
+                <input class="star star-3" id="star-3" type="radio" name="star" value="3" <?php echo "checked";?>/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 2: ?>
+                <input class="star star-2" id="star-2" type="radio" name="star" value="2" <?php echo "checked";?>/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+
+                <?php case 1:?>
+                <input class="star star-1" id="star-1" type="radio" name="star" value="1" <?php echo "checked";?>/>
+                <label class="star star-1" for="star-1"></label>
+                <?Php break; ?>
+                
+                <?Php default: ?>
+                <?Php break; ?>
+                
+                <?Php } ?>
+</form>
+        </div>
+        
+    </div>
+</div>
+</div>
         <!-- Masthead Avatar Image-->
         <img class="masthead-avatar mb-5" src="<?php echo $apartmaji['zgradba'];?>" alt=""  />
         <!-- Masthead Heading-->
@@ -63,6 +126,7 @@ if(admin()){
     <?php
     }
     ?>
+
 </section>
 <div>
 <?php
@@ -105,7 +169,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
             $i++;
         }
         ?>
-            
+  
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -122,98 +186,7 @@ echo '<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>';
 ?>
 </div>
 
-<div class="container d-flex justify-content-center mt-20">
-<div class="row">
-    <div class="col-md-12">
-        <div class="stars">
-        <form action="ocena_vpis.php" method="post">
-                <input type="hidden" name="id_apartmaji" value="<?php echo $apartmaji['id_apartmaji'];?>" />
-                <?php $ocena = $apartmaji['ocena'];
-                switch ($ocena) {
-                    case 5: ?><input class="star star-5" id="star-5" type="radio" name="star" value="5" <?php echo "checked";?>/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                <label class="star star-1" for="star-1"></label>
-                <?Php break; ?>
 
-                <?php case 4: ?><input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4" <?php echo "checked";?>/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                <label class="star star-1" for="star-1"></label>
-                <?Php break; ?>
-
-                <?php case 3: ?>
-                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" <?php echo "checked";?>/>
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                <label class="star star-1" for="star-1"></label>
-                <?Php break; ?>
-
-                <?php case 2: ?>
-                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2" <?php echo "checked";?>/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                <label class="star star-1" for="star-1"></label>
-                <?Php break; ?>
-
-                <?php case 1:?>
-                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" <?php echo "checked";?>/>
-                <label class="star star-1" for="star-1"></label>
-                <?Php break; ?>
-                
-                <?Php default: ?>
-                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                <label class="star star-1" for="star-1"></label>
-                <?Php break; ?>
-                
-                <?Php } ?>
-                <input type="submit" value="Glasuj" class="btn btn-primary" />
-</form>
-        </div>
-        
-    </div>
-</div>
-</div>
 
 
 <div class="komentarji" id="komentarji">
