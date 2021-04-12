@@ -17,7 +17,7 @@
                 </div>
                 <!-- Footer Social Icons-->
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Around the Web</h4>
+                    <h4 class="text-uppercase mb-4"></h4>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
                             class="fab fa-fw fa-facebook-f"></i></a>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
@@ -29,7 +29,8 @@
                 <div class="col-lg-4">
                     <h4 class="text-uppercase mb-4">O nas</h4>
                     <p class="lead mb-0">
-                        To je najbolša stran o apartmajih!
+                        Smo najbolša spletna stran o apartmajih. <br/>
+                       Na enem mestu vam ponujam največjo izbiro apartmajev.
                         
                     </p>
                 </div>
@@ -38,7 +39,7 @@
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright © Your Website 2020</small></div>
+        <div class="container"><small>Copyright © Apartmaji 2021</small></div>
     </div>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
     <div class="scroll-to-top d-lg-none position-fixed">

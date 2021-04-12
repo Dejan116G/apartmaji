@@ -36,7 +36,6 @@ if(admin()){
 <div class="row">
     <div class="col-md-12">
         <div class="stars">
-        <form action="ocena_vpis.php" method="post">
                 <input type="hidden" name="id_apartmaji" value="<?php echo $apartmaji['id_apartmaji'];?>" />
                 <?php $ocena = $apartmaji['ocena'];
                 switch ($ocena) {
@@ -88,7 +87,6 @@ if(admin()){
                 <?Php break; ?>
                 
                 <?Php } ?>
-</form>
         </div>
         
     </div>
